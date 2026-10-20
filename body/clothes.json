@@ -1,0 +1,51 @@
+[
+    {
+        "Name": "Fear Is The Mind Killer",
+        "Gender": "men",
+        "Price": 45,
+        "ImagePath": "fear.png",
+        "OutOfStock": false,
+        "Cusom": false
+    },
+    {
+        "Name": "Divne Divine Divine",
+        "Gender": "men",
+        "Price": 40,
+        "ImagePath": "divine.jpg",
+        "OutOfStock": false,
+        "Cusom": false
+    },
+    {
+        "Name": "Good Polo",
+        "Gender": "men",
+        "Price": 45,
+        "ImagePath": "goodpolo.jpg",
+        "OutOfStock": false,
+        "Cusom": false
+    },
+    {
+        "Name": "Track Jacket",
+        "Gender": "men",
+        "Price": 40,
+        "ImagePath": "trackjacket.jpg",
+        "OutOfStock": false,
+        "Cusom": true
+    },
+    {
+        "Name": "Salmon Cropped Hoodie",
+        "Gender": "woman",
+        "Price": 50,
+        "ImagePath": "salmon.jpg",
+        "OutOfStock": false,
+        "Cusom": false
+    },
+    {
+        "Name": "3/4 Sweat Nupey Shorts",
+        "Gender": "men",
+        "Price": 55,
+        "ImagePath": "shorts.jpg",
+        "OutOfStock": false,
+        "Cusom": false
+    }
+
+]

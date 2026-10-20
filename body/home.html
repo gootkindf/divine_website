@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+        
+        
+    </head>
+
+    <body>
+        <header id="head"></header>
+        <script src="header/header.js"></script> 
+        <script src="clock/clock.js"></script> 
+        
+        <div class="content">
+            <div class="filters">
+                <h3>Browse By Category</h3>
+                <h3>Price Range</h3>
+                <h3>Availability</h3>
+                <h3>Deals</h3>
+            </div>
+            <div class="myGrid" id="grid"></div>
+            <div class="sort">
+                <h3>Sort</h3>
+                <div>Featured</div>
+                <div>Popularity</div>
+                <div>Price</div>
+                <div>Alphabetical</div>
+            </div>
+        </div>
+
+        <script>
+            const items = document.getElementById("grid");
+            var clothing = "";
+            
+            function printElem(elem){
+                clothing += `
+                    <div class="item" id="${elem.Name}">
+                        <img src="${elem.ImagePath}">
+                        <div class="content"> 
+                            <div class="items divine"> Divine Timing </div>
+                            <div class="descript"> 
+                                <span> ${elem.Name} </span>
+                                <span> $${elem.Price} </span>
+                            </div>
+                            
+                        </div>
+                    </div>  `;
+            }
+
+            $.get("clothes.json", function(data) {
+                data.forEach(elem => {
+                    if(!elem.OutOfStock) {
+                        printElem(elem);
+                    }
+                })
+                items.innerHTML = clothing;
+            })
+
+        </script>
+    </body>
+
+</html>
