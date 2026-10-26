@@ -1,0 +1,57 @@
+[
+  {
+    "Name": "Fear Is The Mind Killer",
+    "Gender": "men",
+    "Price": 45,
+    "ImagePath": "fear.png",
+    "Stock": 20,
+    "Sizes": { "XS": 0, "S": 5, "M": 3, "L": 7, "XL": 5, "XXL": 0 },
+    "OutOfStock": false,
+    "Custom": false
+  },
+  {
+    "Name": "Divne Divine Divine",
+    "Gender": "men",
+    "Price": 40,
+    "ImagePath": "divine.jpg",
+    "Stock": 35,
+    "Sizes": { "XS": 1, "S": 5, "M": 9, "L": 10, "XL": 8, "XXL": 2 },
+    "Custom": false
+  },
+  {
+    "Name": "Good Polo",
+    "Gender": "men",
+    "Price": 45,
+    "ImagePath": "goodpolo.jpg",
+    "Stock": 10,
+    "Sizes": { "XS": 0, "S": 1, "M": 3, "L": 3, "XL": 2, "XXL": 1 },
+    "Custom": false
+  },
+  {
+    "Name": "Track Jacket",
+    "Gender": "men",
+    "Price": 40,
+    "ImagePath": "trackjacket.jpg",
+    "Stock": 100,
+    "Sizes": { "XS": 4, "S": 14, "M": 25, "L": 29, "XL": 20, "XXL": 8 },
+    "Custom": true
+  },
+  {
+    "Name": "Salmon Cropped Hoodie",
+    "Gender": "woman",
+    "Price": 50,
+    "ImagePath": "salmon.jpg",
+    "Stock": 50,
+    "Sizes": { "XS": 2, "S": 7, "M": 12, "L": 14, "XL": 11, "XXL": 4 },
+    "Custom": false
+  },
+  {
+    "Name": "3/4 Sweat Nupey Shorts",
+    "Gender": "men",
+    "Price": 55,
+    "ImagePath": "shorts.jpg",
+    "Stock": 400,
+    "Sizes": { "XS": 20, "S": 60, "M": 105, "L": 115, "XL": 75, "XXL": 25 },
+    "Custom": false
+  }
+]

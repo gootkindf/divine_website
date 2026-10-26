@@ -1,0 +1,255 @@
+body {
+    background-color: #f4ebdc;
+    margin: 0;
+    padding-top: 0;
+    scroll-behavior: smooth;
+}
+
+.h1 {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+img {
+    width: 100%;
+    height: 100%; /* Force it to stay inside the container */
+    object-fit: cover; 
+}
+
+div {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.myGrid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: auto;
+    gap: 20px;
+    row-gap: 60px; 
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters {
+    padding-left: 60px;
+}
+
+.sort {
+    padding-right: 150px;
+}
+
+.item {
+    border: 1px solid black;
+    color: black;
+    text-align: center;
+    height: 350px;
+    text-transform: uppercase;
+}
+
+.items.divine{
+    display: flex;
+    justify-content: left;
+
+}
+
+.descript {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*Nav bar css*/
+
+body {
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    /* box-sizing: border-box; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 24px;
+    /* background: #333; */
+}
+
+.navbar ul {
+    display: flex;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+}
+
+.navbar a {
+    /* display: block; */
+    /* padding: 10px 24px; */
+    color: #1A1714;
+    /* font-family: 'Courier Prime', monospace; */
+    font: 'Courier Prime';
+    text-decoration: none;
+    /* border: 2px solid #1A1714;
+    border-radius: 6px; */
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar a:hover {
+    background: white;
+    color: #333;
+}
+
+header{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.5s ease-in-out;
+    
+}
+
+header.scrolled{
+    background-color: #0E0D0C;
+    
+}
+
+
+
+.buttons{
+    text-decoration: none;
+    color: #0E0D0C;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
+.buttons.active {
+    text-decoration: underline;
+    color: #B0211F;
+    font-weight: 700;
+
+}
+
+.buttons:hover {
+    color: #B0211F;
+    font-weight: 700;
+}
+
+.buttons.scrolled{
+    color: white;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.buttons.active.scrolled{
+    color: #D0281E;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.navLeft {
+    flex: 1;
+    text-align: left;
+}
+
+.logo {
+    font-family: 'Caveat Brush', sans-serif; 
+    font-size: 34px;
+    font-weight: 400;
+    color: #D0281E;
+    align-items: baseline;
+}
+
+.navRight {
+    flex: 1;
+    text-align: right;
+}
+
+
+
+
+
+
+/*Clock css*/
+
+.clock{
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    position: relative;
+    margin: 75px auto;
+    background-image: url('clock/DivineClock.png');
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(-5px 5px 8px rgba(0, 0, 0, 0.535));
+    
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-origin: bottom center;
+    border-radius: 4px;
+}
+
+.hour {
+    width: 8px;
+    height: 60px;
+    background-image: url('clock/hour.png');
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(2px -2px 2px rgba(0, 0, 0, 0.535));
+}
+
+.minute {
+    width: 8px;
+    height: 90px;
+    background-image: url('clock/minute.png');
+    background-size: cover;
+    background-position: center;
+    filter: drop-shadow(2px -2px 2px rgba(0, 0, 0, 0.535));
+}
+
+.second {
+    width: 1.25px;
+    height: 100px;
+    background-color: rgb(174, 8, 8);
+}
+
+.center {
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
