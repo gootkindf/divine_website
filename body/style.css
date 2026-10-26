@@ -253,3 +253,30 @@ header.scrolled{
 }
 
 
+/*Container CSS*/
+
+.container form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.container label {
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.container input[type="text"],
+.container select,
+.container textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container input[type="submit"] {
+    margin-top: 16px;
+    padding: 10px;
+    cursor: pointer;
+}
