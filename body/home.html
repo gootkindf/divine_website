@@ -38,10 +38,14 @@
             var clothing = "";
             var filtr = "Unisex";
             
+            function openProductPage(imageName) {
+                window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
+            }
+            
             function printElem(elem){
                 clothing += `
                     <div class="item" id="${elem.Name}">
-                        <img src="${elem.ImagePath}">
+                        <img src="${elem.ImagePath}" alt="${elem.Name}" onClick="openProductPage('${elem.Name}')">
                         <div class="content"> 
                             <div class="items divine"> Divine Timing </div>
                             <div class="descript"> 
@@ -56,7 +60,7 @@
                 clothing = "";
                 $.get("clothes.json", function(data) {
                     data.forEach(elem => {
-                        if(!elem.OutOfStock) {
+                        if(elem.Stock > 0) {
                             if(filtr == "Unisex"){
                                 printElem(elem);
                             } else if(filtr == elem.Gender) {
