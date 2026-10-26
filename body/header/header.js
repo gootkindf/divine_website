@@ -1,7 +1,7 @@
 function initHeader() {
     var output = `
         <div class="navLeft">
-            <a class="buttons active" href="#">Unisex</a>
+            <a class="buttons active" href="home.html">Unisex</a>
             <a class="buttons" href="#">Mens</a>
             <a class="buttons" href="#">Womans</a>
         </div>
@@ -36,6 +36,8 @@ window.addEventListener("scroll", function() {
     }
 });
 
+
+
 initHeader();
 
 const buttons = document.querySelectorAll(".buttons");
@@ -45,8 +47,16 @@ buttons.forEach(button => {
         // Update selected button styling
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
-        displayClothes(button.textContent);
-        // Filter and display the data
-        // displayProducts(button.dataset.category);
+        console.log(button.textContent.toLowerCase());
+        
+        if(button.textContent == "Mens"){
+            displayClothes("men");
+        } else if(button.textContent == "Womans"){
+            displayClothes("woman");
+        } else {
+            displayClothes("Unisex");
+        }
+        
     });
 });
+
