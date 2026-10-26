@@ -116,7 +116,7 @@
             function printElem(elem){
                 clothing += `
                     <li class="items" id="${elem.Name}" onClick="openProductPage('${elem.Name}')">
-                        <img class="img search" src="${elem.ImagePath}" alt="${elem.Name}">
+                        <img class="img search" src="${elem.ImagePath[0]}" alt="${elem.Name}">
                         <div>
                             <div class="description"> 
                                 <span> ${elem.Name} </span>

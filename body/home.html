@@ -51,7 +51,7 @@
             function printElem(elem){
                 clothing += `
                     <div class="item" id="${elem.Name}">
-                        <img src="${elem.ImagePath}" alt="${elem.Name}" onClick="openProductPage('${elem.Name}')">
+                        <img src="${elem.ImagePath[0]}" alt="${elem.Name}" onClick="openProductPage('${elem.Name}')">
                         <div class="content"> 
                             <div class="items divine"> Divine Timing </div>
                             <div class="descript"> 

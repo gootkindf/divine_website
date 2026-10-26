@@ -7,6 +7,7 @@
       href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Special+Elite&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -17,13 +18,6 @@
         margin-top: 100px;
         display: flex;
         width: 100%;
-      }
-      .content button:active {
-        border-color: #fff;
-        box-shadow:
-          0 0 5px #fff,
-          0 0 10px #fff,
-          0 0 20px #fff;
       }
       .sideColumn {
         margin-top: 50px;
@@ -40,47 +34,26 @@
         font-size: 25px;
         transition: all 0.3s ease;
       }
-      .clearDiv {
+      .imgButton:active {
+        border-color: #fff;
+        box-shadow:
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 20px #fff;
+      }
+      #sizeSelect {
+        width: 100%;
+        height: 7%;
         background-color: transparent;
         font-family: "Courier Prime", monospace;
         font-size: 15px;
         font-weight: bold;
-        width: 100%;
-        height: 7%;
-        margin-top: 10px;
-      }
-      #p2 {
-        font-family: "Special Elite", "Courier Prime", Courier, monospace;
-        color: #b0211f;
-        font-size: 15px;
-      }
-      #fitSection {
-        margin-top: 10%;
-      }
-      #bagButton {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        margin-top: 5%;
-        width: 100%;
-        height: 15%;
-        background-color: #b0211f;
-        box-shadow: 3px 3px 0 #000;
-        font-weight: bold;
-        font-family: "Special Elite", "Courier Prime", Courier, monospace;
-        color: #f2eadb;
-      }
-      #bagButton p {
-        margin: 0px;
-        font-size: 30px;
-      }
-      #sizeSelect {
         padding-left: 10px;
       }
       #stockMarker {
         color: #b0211f;
         font-weight: bold;
-        margin-top: 5px;
+        margin: 5px;
       }
       #price {
         font-weight: bold;
@@ -103,9 +76,9 @@
       }
     </style>
   </head>
-  <body>
+  <body style="display: flex">
     <header id="head"></header>
-    <script src="header/prodHeader.js"></script>
+    <script src="header/header.js"></script>
     <div class="content" id="content">
       <div class="sideColumn">
         Divine Timing
@@ -120,34 +93,12 @@
       <div class="sideColumn">
         <div id="price"></div>
         <div id="stockMarker"></div>
-        <select id="sizeSelect" class="clearDiv">
+        <select id="sizeSelect">
           <option value="" disabled selected hidden>Select an size</option>
         </select>
-        <button id="bagButton">
-          <p>IT'S YOUR TIME</p>
-          ADD TO BAG ·
-        </button>
-        <button id="buyButton" class="clearDiv">BUY IT NOW</button>
-        <div id="fitSection">
-          <p>COMPLETE THE FIT</p>
-          <p id="p2">Wear the whole collective.</p>
-        </div>
       </div>
     </div>
     <script>
-      function getFitItems(data) {
-        if (data.length < 3) return data;
-        choices = [];
-
-        while (choices.length < 3) {
-          choice = data[Math.floor(Math.random() * data.length)];
-          if (!choices.includes(choice)) {
-            choices.push(choice);
-          }
-        }
-        return choices;
-      }
-
       const params = new URLSearchParams(window.location.search);
       const imageName = params.get("image");
       const product = {
@@ -164,42 +115,17 @@
           if (elem.Name == imageName) {
             product.Gender = elem.Gender;
             product.Price = elem.Price;
-            product.ImagePath = elem.ImagePath;
+            product.ImagePath = elem.ImagePath[0];
             product.Stock = elem.Stock;
             product.Sizes = elem.Sizes;
             product.Custom = elem.Custom;
-            selectStr = "";
-            Object.entries(product.Sizes).forEach(([size, count]) => {
-              selectStr += "<option value='" + size + "'>" + size + "</option>";
-            });
-            document.getElementById("sizeSelect").innerHTML += selectStr;
+            product.Sizes.entries;
             document.getElementById("productName").innerHTML = product.Name;
             document.getElementById("productImg").src = product.ImagePath;
             document.getElementById("price").innerHTML = "$" + product.Price;
-            document.getElementById("bagButton").innerHTML +=
-              " $" + product.Price;
             if (product.Stock < 50) {
               document.getElementById("stockMarker").innerHTML = "⏺ Low stock";
             }
-            fitItems = getFitItems(
-              data.filter(
-                (item) =>
-                  item.Gender == product.Gender && item.Name != product.Name,
-              ),
-            );
-            divString = "";
-            fitItems.forEach((item) => {
-              divString +=
-                "<div class='fitDiv'> <img src='" + item.ImagePath + "'/>";
-              divString +=
-                "<div class='textDiv'><h2>" +
-                item.Name +
-                "</h2><h3>" +
-                item.Price +
-                "</h3></div>";
-              divString += "<button class='fitAddButton'>+ ADD</button></div>";
-            });
-            document.getElementById("fitSection").innerHTML = divString;
           }
         });
       });
