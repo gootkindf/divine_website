@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="style.css">
 
         <style>
+            ul {
+                margin-bottom: 100px;
+            }
+            
             li {
                 margin-bottom: 10px;
                 padding: 10px;
@@ -85,6 +89,10 @@
         
         <ul class="search" id="list"></ul>
 
+        <footer id="footer"> </footer>
+        <script src="footer/footer.js"></script> 
+
+
         <script>
             document.getElementById("unisex").classList.remove("active");
             document.getElementById("search").classList.add("active");
@@ -101,8 +109,8 @@
             
             function printElem(elem){
                 clothing += `
-                    <li class="items" id="${elem.Name}">
-                        <img class="img search" src="${elem.ImagePath}" alt="${elem.Name}" onClick="openProductPage('${elem.Name}')">
+                    <li class="items" id="${elem.Name}" onClick="openProductPage('${elem.Name}')">
+                        <img class="img search" src="${elem.ImagePath}" alt="${elem.Name}">
                         <div class="description"> 
                             <span> ${elem.Name} </span>
                             <span> $${elem.Price} </span>
