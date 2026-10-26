@@ -11,7 +11,7 @@
         "Name": "Divne Divine Divine",
         "Gender": "men",
         "Price": 40,
-        "ImagePath": "divine.jpg",
+        "ImagePath": "divine.png",
         "OutOfStock": false,
         "Cusom": false
     },
@@ -19,7 +19,7 @@
         "Name": "Good Polo",
         "Gender": "men",
         "Price": 45,
-        "ImagePath": "goodpolo.jpg",
+        "ImagePath": "goodpolo.png",
         "OutOfStock": false,
         "Cusom": false
     },
@@ -27,7 +27,7 @@
         "Name": "Track Jacket",
         "Gender": "men",
         "Price": 40,
-        "ImagePath": "trackjacket.jpg",
+        "ImagePath": "trackjacket.png",
         "OutOfStock": false,
         "Cusom": true
     },
@@ -35,7 +35,7 @@
         "Name": "Salmon Cropped Hoodie",
         "Gender": "woman",
         "Price": 50,
-        "ImagePath": "salmon.jpg",
+        "ImagePath": "salmon.png",
         "OutOfStock": false,
         "Cusom": false
     },
@@ -43,7 +43,7 @@
         "Name": "3/4 Sweat Nupey Shorts",
         "Gender": "men",
         "Price": 55,
-        "ImagePath": "shorts.jpg",
+        "ImagePath": "shorts.png",
         "OutOfStock": false,
         "Cusom": false
     }
