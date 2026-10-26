@@ -2,84 +2,84 @@
     {
         "Name": "Truck",
         "Gender": "men",
-        "ImagePath": "truck.jpg",
+        "ImagePath": "pictures/truck.jpg",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Green Hat",
         "Gender": "men",
-        "ImagePath": "green_hat.png",
+        "ImagePath": "pictures/green_hat.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Fear Is The Mind Killer",
         "Gender": "men",
-        "ImagePath": "fear.png",
+        "ImagePath": "pictures/fear.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Candy Cane",
         "Gender": "men",
-        "ImagePath": "candy_cane.png",
+        "ImagePath": "pictures/candy_cane.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Divne Divine Divine",
         "Gender": "men",
-        "ImagePath": "divine.png",
+        "ImagePath": "pictures/divine.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Good Polo",
         "Gender": "men",
-        "ImagePath": "goodpolo.png",
+        "ImagePath": "pictures/goodpolo.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Track Jacket",
         "Gender": "men",
-        "ImagePath": "trackjacket.png",
+        "ImagePath": "pictures/trackjacket.png",
         "OutOfStock": false,
         "Cusom": true
     },
     {
         "Name": "Salmon Cropped Hoodie",
         "Gender": "woman",
-        "ImagePath": "salmon.png",
+        "ImagePath": "pictures/salmon.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Monolith",
         "Gender": "men",
-        "ImagePath": "gray_monolith.png",
+        "ImagePath": "pictures/gray_monolith.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "Chest down",
         "Gender": "men",
-        "ImagePath": "chest_down.png",
+        "ImagePath": "pictures/chest_down.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "kau2",
         "Gender": "men",
-        "ImagePath": "kau2.png",
+        "ImagePath": "pictures/kau2.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
         "Name": "3/4 Sweat Nupey Shorts",
         "Gender": "men",
-        "ImagePath": "shorts.png",
+        "ImagePath": "pictures/shorts.png",
         "OutOfStock": false,
         "Cusom": false
     }
