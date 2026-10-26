@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+<style>
+    .myGrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);  /* adjust to your layout */
+        grid-auto-rows: 200px;                   /* every cell gets the same row height */
+        grid-auto-flow: dense;                   /* fills the gaps the big items leave */
+        gap: 16px;
+    }
+
+    .myGrid .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* items 1, 4, 7, 10, ... span 2 columns and 2 rows */
+    .myGrid .item:nth-child(3n + 1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+</style>
+</head>
+    <script>
+        fetch('countries.json')
+            .then(response => response.json())
+            .then(countries => {
+                const select = document.getElementById('country');
+                countries.forEach(c => {
+                    const option = document.createElement('option');
+                    option.value = c.code;       // "US", "CA", ...
+                    option.textContent = c.name; // "United States", ...
+                    select.appendChild(option);
+                });
+            })
+            .catch(err => console.error('Could not load countries:', err));
+    </script>
+
+    <body>
+        <header id="head"></header>
+        <script src="header/header.js"></script> 
+        <!-- <script src="clock/clock.js"></script>  -->
+        
+        <div class="navbar">
+        <!-- <div class="logo">My Logo</div> -->
+            <ul>
+                <li><a href="default.asp">Home</a></li>
+                <li><a href="news.asp">Shop</a></li>
+            </ul>
+        </div>
+
+            <div class="container">
+                <form action="action_page.php">
+
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                    <label for="lname">Email</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your email address..">
+
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                        <option value="">Select a country...</option>
+                    </select>
+
+                    <label for="subject">Subject</label>
+                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+                    <input type="submit" value="Submit">
+
+                </form>
+            </div>
+
+    </body>
+
+</html>
