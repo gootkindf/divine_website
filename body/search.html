@@ -11,8 +11,9 @@
         <style>
             ul {
                 margin-bottom: 100px;
+                padding-right: 40px;
             }
-            
+
             li {
                 margin-bottom: 10px;
                 padding: 10px;
@@ -22,7 +23,7 @@
             }
             .img.search {
                 max-width: 100px;
-                max-height: 100px;
+                max-height: 90px;
                 
             }
 
@@ -57,9 +58,8 @@
             }
 
             .description{
-                padding-left: 50px;
+                padding-left: 30px;
                 padding-right: 20px;
-                width: 100%;
                 font-size: 20px;
                 font-weight: 700;
                 display: flex;
@@ -72,6 +72,11 @@
                 font-weight: 400;
                 color: gray;
                 padding-left: 50px;
+            }
+
+            .desc {
+                padding-left: 50px;
+                padding-right: 55px;
             }
         </style>
         
@@ -111,9 +116,14 @@
                 clothing += `
                     <li class="items" id="${elem.Name}" onClick="openProductPage('${elem.Name}')">
                         <img class="img search" src="${elem.ImagePath}" alt="${elem.Name}">
-                        <div class="description"> 
-                            <span> ${elem.Name} </span>
-                            <span> $${elem.Price} </span>
+                        <div>
+                            <div class="description"> 
+                                <span> ${elem.Name} </span>
+                                <span> $${elem.Price} </span>
+                            </div>
+                            <div class="desc">
+                                ${elem.Description}
+                            </div>
                         </div>
                     </li>  `;
             }

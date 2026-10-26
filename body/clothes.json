@@ -7,7 +7,8 @@
     "Stock": 20,
     "Sizes": { "XS": 0, "S": 5, "M": 3, "L": 7, "XL": 5, "XXL": 0 },
     "OutOfStock": false,
-    "Custom": false
+    "Custom": false,
+    "Description": "A heavyweight oversized boxy tee built for everyday wear. Designed with a relaxed silhouette and a structured feel, this piece brings comfort and presence together. A statement graphic makes it a staple for any rotation."
   },
   {
     "Name": "Divne Divine Divine",
@@ -16,7 +17,8 @@
     "ImagePath": "divine.png",
     "Stock": 35,
     "Sizes": { "XS": 1, "S": 5, "M": 9, "L": 10, "XL": 8, "XXL": 2 },
-    "Custom": false
+    "Custom": false,
+    "Description": "A heavyweight boxy tee with an oversized fit and a bold graphic. Made for a relaxed drape and a structured feel, this piece keeps the look effortless while making a statement. Built to stand out without doing too much."
   },
   {
     "Name": "Good Polo",
@@ -25,7 +27,8 @@
     "ImagePath": "goodpolo.png",
     "Stock": 10,
     "Sizes": { "XS": 0, "S": 1, "M": 3, "L": 3, "XL": 2, "XXL": 1 },
-    "Custom": false
+    "Custom": false,
+    "Description": "A cotton polo with a classic quarter-button neckline and a relaxed fit. Combining the structure of a traditional polo with an easy streetwear feel, this piece delivers a clean look that works dressed up or down."
   },
   {
     "Name": "Track Jacket",
@@ -34,7 +37,8 @@
     "ImagePath": "trackjacket.png",
     "Stock": 100,
     "Sizes": { "XS": 4, "S": 14, "M": 25, "L": 29, "XL": 20, "XXL": 8 },
-    "Custom": true
+    "Custom": true,
+    "Description": "A zip-up track jacket with a relaxed fit and a sporty silhouette. Designed for easy layering, it brings together everyday comfort and a timeless athletic look. A versatile staple that works on its own or as part of a full fit."
   },
   {
     "Name": "Salmon Cropped Hoodie",
@@ -43,7 +47,8 @@
     "ImagePath": "salmon.png",
     "Stock": 50,
     "Sizes": { "XS": 2, "S": 7, "M": 12, "L": 14, "XL": 11, "XXL": 4 },
-    "Custom": false
+    "Custom": false,
+    "Description": "A cropped hoodie with a relaxed silhouette and a bold graphic. Designed to sit above the waist, it balances a casual feel with a distinct shape. An easy statement piece made for layering or wearing on its own."
   },
   {
     "Name": "3/4 Sweat Nupey Shorts",
@@ -52,7 +57,8 @@
     "ImagePath": "shorts.png",
     "Stock": 400,
     "Sizes": { "XS": 20, "S": 60, "M": 105, "L": 115, "XL": 75, "XXL": 25 },
-    "Custom": false
+    "Custom": false,
+    "Description": "Long shorts designed with a relaxed fit and an extended silhouette. Built for comfort and everyday wear, these shorts bring a laid-back streetwear look with a substantial feel. Made to pair effortlessly with oversized tees and hoodies."
   },
   {
     "Name": "Truck",
@@ -61,7 +67,8 @@
     "ImagePath": "truck.jpg",
     "Stock": 0,
     "Sizes": {},
-    "Custom": false
+    "Custom": false,
+    "Description": ""
   },
   {
       "Name": "Green Hat",
@@ -70,7 +77,8 @@
       "ImagePath": "green_hat.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   },
   {
       "Name": "Candy Cane",
@@ -79,7 +87,8 @@
       "ImagePath": "candy_cane.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   },
   {
       "Name": "Chest down",
@@ -88,7 +97,8 @@
       "ImagePath": "chest_down.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   },
   {
       "Name": "Divine",
@@ -97,7 +107,8 @@
       "ImagePath": "divine.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   },
   {
       "Name": "Monolith",
@@ -106,7 +117,8 @@
       "ImagePath": "gray_monolith.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   },
   {
       "Name": "kau2",
@@ -115,6 +127,7 @@
       "ImagePath": "kau2.png",
       "Stock": 0,
       "Sizes": {},
-      "Custom": false
+      "Custom": false,
+      "Description": ""
   }
 ]
