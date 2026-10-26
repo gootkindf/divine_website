@@ -23,7 +23,7 @@ div {
     line-height: 1.5;
 }
 
-.myGrid {
+.myGridh {
     display: grid;
     justify-content: center;
     grid-template-columns: 300px 300px 300px;
@@ -251,5 +251,6 @@ header.scrolled{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 
 
