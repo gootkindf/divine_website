@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+
+        <style>
+            li {
+                margin-bottom: 10px;
+                padding: 10px;
+                border-top: .5px solid black;
+                border-bottom: .5px solid black;
+                padding-left: 40px;
+            }
+            .img.search {
+                max-width: 100px;
+                max-height: 100px;
+                
+            }
+
+            .items {
+                display: flex;
+            }
+
+            input[type="search"] {
+                width: 90%;
+                height: 60px;
+                background-color: #f4ebdc;
+                border-color: black;
+                border-style: solid;
+                border-radius: 5px;
+                padding-left: 30px;
+            }
+
+            .searching {
+                margin: 20px;
+                margin-top: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .text {
+                font-family: 'Caveat Brush', sans-serif; 
+                font-size: 44px;
+                font-weight: 400;
+                padding-left: 25px;
+                padding-right: 10px;
+            }
+
+            .description{
+                padding-left: 50px;
+                padding-right: 20px;
+                width: 100%;
+                font-size: 20px;
+                font-weight: 700;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .none {
+                font-family: 'Courier Prime', monospace;
+                font-size: 12px;
+                font-weight: 400;
+                color: gray;
+                padding-left: 50px;
+            }
+        </style>
+        
+    
+    </head>
+
+    <body>
+        <header id="head"></header>
+        <script src="header/header.js"></script> 
+        
+        <div class="searching"> 
+            <h1 class="text">Search</h1>
+            <input type="search" id="searchBox" placeholder="Divine Divine Divine">
+        </div>
+        
+        <ul class="search" id="list"></ul>
+
+        <script>
+            document.getElementById("unisex").classList.remove("active");
+            document.getElementById("search").classList.add("active");
+
+            const items = document.getElementById("list");
+            const searchBox = document.getElementById("searchBox");
+            var clothing = "";
+            var filtr = "Unisex";
+            var keyword = "all";
+            
+            function openProductPage(imageName) {
+                window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
+            }
+            
+            function printElem(elem){
+                clothing += `
+                    <li class="items" id="${elem.Name}">
+                        <img class="img search" src="${elem.ImagePath}" alt="${elem.Name}" onClick="openProductPage('${elem.Name}')">
+                        <div class="description"> 
+                            <span> ${elem.Name} </span>
+                            <span> $${elem.Price} </span>
+                        </div>
+                    </li>  `;
+            }
+            
+            function displayClothes(){
+                clothing = "";
+                $.get("clothes.json", function(data) {
+                    data.forEach(elem => {
+                        if(elem.Stock > 0) {
+                            if (keyword == "all"){
+                                printElem(elem);
+                            } else if(elem.Name.toLowerCase().includes(keyword)) {
+                                printElem(elem);
+                            }
+                        }
+                    })
+                    if(clothing == ""){
+                        items.innerHTML = "No Results Found"
+                        items.classList.add("none");
+                    } else {
+                        items.innerHTML = clothing;
+                        items.classList.remove("none");
+                    }
+
+                    
+                })
+
+            }
+
+            displayClothes(filtr);
+
+            searchBox.addEventListener('keydown', function(event) {
+                if(event.key == 'Enter') {
+                    keyword = searchBox.value.toLowerCase();
+                    displayClothes();
+                }
+            })
+
+            
+
+
+        </script>
+    </body>
+
+</html>
