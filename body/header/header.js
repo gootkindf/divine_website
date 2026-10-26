@@ -1,16 +1,16 @@
 function initHeader() {
     var output = `
         <div class="navLeft">
-            <a class="buttons active" href="home.html">Unisex</a>
-            <a class="buttons" href="#">Mens</a>
-            <a class="buttons" href="#">Womans</a>
+            <a id="unisex" class="buttons active" href="home.html">Unisex</a>
+            <a id="men" class="buttons" href="home.html#mens">Mens</a>
+            <a id="woman" class="buttons" href="home.html#womans">Womans</a>
         </div>
         <div class="logo"> divine </div>
         <div class="navRight"> 
-            <a class="buttons" href="gallery.html">Gallery</a>
+            <a id="gallery" class="buttons" href="gallery.html">Gallery</a>
             <a class="buttons" href="#">Instagram</a>
-            <a class="buttons" href="#">Search</a>
-            <a class="buttons" href="#">Bag</a>
+            <a id="search" class="buttons" href="#">Search</a>
+            <a id="bag" class="buttons" href="#">Bag</a>
         </div>
     `;
     document.getElementById("head").innerHTML = output;
@@ -43,11 +43,10 @@ initHeader();
 const buttons = document.querySelectorAll(".buttons");
 
 buttons.forEach(button => {
-    button.addEventListener("click", () => {
+        button.addEventListener("click", () => {
         // Update selected button styling
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
-        console.log(button.textContent.toLowerCase());
 
         if(button.textContent == "Mens"){
             displayClothes("men");
@@ -56,7 +55,7 @@ buttons.forEach(button => {
         } else {
             displayClothes("Unisex");
         }
-        
+            
     });
 });
 
