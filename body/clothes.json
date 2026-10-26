@@ -53,5 +53,68 @@
     "Stock": 400,
     "Sizes": { "XS": 20, "S": 60, "M": 105, "L": 115, "XL": 75, "XXL": 25 },
     "Custom": false
+  },
+  {
+    "Name": "Truck",
+    "Gender": "men",
+    "Price": 0,
+    "ImagePath": "truck.jpg",
+    "Stock": 0,
+    "Sizes": {},
+    "Custom": false
+  },
+  {
+      "Name": "Green Hat",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "green_hat.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
+  },
+  {
+      "Name": "Candy Cane",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "candy_cane.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
+  },
+  {
+      "Name": "Chest down",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "chest_down.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
+  },
+  {
+      "Name": "Divine",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "divine.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
+  },
+  {
+      "Name": "Monolith",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "gray_monolith.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
+  },
+  {
+      "Name": "kau2",
+      "Gender": "men",
+      "Price": 0,
+      "ImagePath": "kau2.png",
+      "Stock": 0,
+      "Sizes": {},
+      "Custom": false
   }
 ]

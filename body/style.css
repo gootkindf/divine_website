@@ -5,7 +5,7 @@ body {
     scroll-behavior: smooth;
 }
 
-.h1 {
+h1 {
     font-size: 12px;
     font-weight: 700;
 }
@@ -32,17 +32,17 @@ div {
     row-gap: 60px; 
 }
 
-.content {
+.all {
     display: flex;
     justify-content: space-between;
 }
 
 .filters {
-    padding-left: 60px;
+    padding: 60px;
 }
 
 .sort {
-    padding-right: 150px;
+    padding: 60px;
 }
 
 .item {

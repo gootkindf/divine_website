@@ -8,13 +8,14 @@
 
         <link rel="stylesheet" href="style.css">
         
-        
+    
     </head>
 
     <body>
         <header id="head"></header>
         <script src="header/header.js"></script> 
         <script src="clock/clock.js"></script> 
+        
         
         <div class="all">
             <div class="filters">
@@ -56,6 +57,7 @@
                         </div>
                     </div>  `;
             }
+            
             function displayClothes(filtr){
                 clothing = "";
                 $.get("clothes.json", function(data) {
@@ -72,7 +74,7 @@
                 })
 
             }
-            
+
             displayClothes(filtr);
 
             
