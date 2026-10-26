@@ -5,7 +5,7 @@ function initHeader() {
             <a id="men" class="buttons" href="home.html#mens">Mens</a>
             <a id="woman" class="buttons" href="home.html#womans">Womans</a>
         </div>
-        <div class="logo"> divine </div>
+        <a class="logo" href="home.html"> divine </a>
         <div class="navRight"> 
             <a id="gallery" class="buttons" href="gallery.html">Gallery</a>
             <a class="buttons" href="#">Instagram</a>
