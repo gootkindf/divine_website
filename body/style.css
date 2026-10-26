@@ -176,6 +176,7 @@ header.scrolled{
 }
 
 .logo {
+    text-decoration: none;
     font-family: 'Caveat Brush', sans-serif; 
     font-size: 34px;
     font-weight: 400;
@@ -252,5 +253,26 @@ header.scrolled{
     transform: translate(-50%, -50%);
 }
 
+
+@media (max-width: 1350px) {
+    .myGridh {
+        grid-template-columns: 300px 300px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .myGridh {
+        grid-template-columns: 300px;
+    }
+}
+
+@media (max-width: 700px) {
+    .filters {
+        padding: 20px;
+    }
+    .sort {
+        padding: 20px;
+    }
+}
 
 
