@@ -7,7 +7,7 @@ function initHeader() {
         </div>
         <div class="logo"> divine </div>
         <div class="navRight"> 
-            <a class="buttons" href="#">Gallery</a>
+            <a class="buttons" href="gallery.html">Gallery</a>
             <a class="buttons" href="#">Instagram</a>
             <a class="buttons" href="#">Search</a>
             <a class="buttons" href="#">Bag</a>
@@ -48,7 +48,7 @@ buttons.forEach(button => {
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
         console.log(button.textContent.toLowerCase());
-        
+
         if(button.textContent == "Mens"){
             displayClothes("men");
         } else if(button.textContent == "Womans"){
