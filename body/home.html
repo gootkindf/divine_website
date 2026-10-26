@@ -16,15 +16,7 @@
         <script src="header/header.js"></script> 
         <script src="clock/clock.js"></script> 
         
-        <div class="navbar">
-        <!-- <div class="logo">My Logo</div> -->
-            <ul>
-                <li><a href="default.asp">Home</a></li>
-                <li><a href="news.asp">Shop</a></li>
-            </ul>
-        </div>
-
-        <div class="content">
+        <div class="all">
             <div class="filters">
                 <h3>Browse By Category</h3>
                 <h3>Price Range</h3>
@@ -44,6 +36,7 @@
         <script>
             const items = document.getElementById("grid");
             var clothing = "";
+            var filtr = "Unisex";
             
             function printElem(elem){
                 clothing += `
@@ -59,15 +52,27 @@
                         </div>
                     </div>  `;
             }
-
-            $.get("clothes.json", function(data) {
-                data.forEach(elem => {
-                    if(!elem.OutOfStock) {
-                        printElem(elem);
-                    }
+            function displayClothes(filtr){
+                clothing = "";
+                $.get("clothes.json", function(data) {
+                    data.forEach(elem => {
+                        if(!elem.OutOfStock) {
+                            if(filtr == "Unisex"){
+                                printElem(elem);
+                            } else if(filtr == elem.Gender) {
+                                printElem(elem);
+                            }
+                        }
+                    })
+                    items.innerHTML = clothing;
                 })
-                items.innerHTML = clothing;
-            })
+
+            }
+            
+            displayClothes(filtr);
+
+            
+
 
         </script>
     </body>
