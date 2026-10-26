@@ -7,16 +7,16 @@
         "Cusom": false
     },
     {
-        "Name": "Fear Is The Mind Killer",
+        "Name": "Green Hat",
         "Gender": "men",
-        "ImagePath": "fear.png",
+        "ImagePath": "green_hat.png",
         "OutOfStock": false,
         "Cusom": false
     },
     {
-        "Name": "Green Hat",
+        "Name": "Fear Is The Mind Killer",
         "Gender": "men",
-        "ImagePath": "green_hat.png",
+        "ImagePath": "fear.png",
         "OutOfStock": false,
         "Cusom": false
     },
@@ -56,23 +56,16 @@
         "Cusom": false
     },
     {
-        "Name": "Chest down",
-        "Gender": "men",
-        "ImagePath": "chest_down.png",
-        "OutOfStock": false,
-        "Cusom": false
-    },
-    {
-        "Name": "Divine",
-        "Gender": "men",
-        "ImagePath": "divine.png",
-        "OutOfStock": false,
-        "Cusom": false
-    },
-    {
         "Name": "Monolith",
         "Gender": "men",
         "ImagePath": "gray_monolith.png",
+        "OutOfStock": false,
+        "Cusom": false
+    },
+    {
+        "Name": "Chest down",
+        "Gender": "men",
+        "ImagePath": "chest_down.png",
         "OutOfStock": false,
         "Cusom": false
     },
