@@ -11,7 +11,7 @@ function initFooter() {
                 <a id="instagram" class="buttons" href="https://www.instagram.com/divinetimingcollective/">Instagram</a>
                 <a id="search" class="buttons" href="search.html">Search</a>
                 <a id="gallery" class="buttons" href="gallery.html">Gallery</a>
-                <a id="bag" class="buttons" href="#">Bag</a>
+                <a id="bag" class="buttons" href="checkout.html">Bag</a>
             </div>
             <a id="contact" class="buttons" href="contact.html">Contact Us</a>
         </div>
