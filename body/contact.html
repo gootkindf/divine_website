@@ -30,7 +30,7 @@
     }
     .container form {
         display: flex;
-        flex-direction: column;   /* stack every label and field */
+        flex-direction: column;
         gap: 6px;
         max-width: 500px;
         margin: 0 auto;
@@ -73,6 +73,7 @@
         flex: 1;            
     }
 
+    /* Just making sure the footer is in the right spot */
     footer {
         margin-top: auto; 
     }
@@ -80,6 +81,7 @@
 </style>
 </head>
     <script>
+        // Get countries
         fetch('countries.json')
             .then(response => response.json())
             .then(countries => {
@@ -98,8 +100,10 @@
         <header id="head"></header>
         <script src="header/header.js"></script> 
 
-        <p><br><br></p>
+        <!-- space between header and form -->
+        <p><br><br></p> 
 
+            <!-- HTML form -->
             <div class="container">
                 <form action="action_page.php" method="post">
                     <label for="fname">First Name</label>
@@ -127,6 +131,7 @@
         <script src="footer/footer.js"></script> 
 
         <script>
+            // Listen for click basically
             document.addEventListener('DOMContentLoaded', () => {
                 fetch('countries.json')
                     .then(response => {
@@ -137,8 +142,8 @@
                         const select = document.getElementById('country');
                         countries.forEach(c => {
                             const option = document.createElement('option');
-                            option.value = c.code;        // "US", "CA", ...
-                            option.textContent = c.name;  // "United States", ...
+                            option.value = c.code;        // Country code
+                            option.textContent = c.name;  // Country name
                             select.appendChild(option);
                         });
                     })
