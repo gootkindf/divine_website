@@ -11,9 +11,9 @@
 <style>
     .myGrid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);  /* adjust to your layout */
-        grid-auto-rows: 200px;                   /* every cell gets the same row height */
-        grid-auto-flow: dense;                   /* fills the gaps the big items leave */
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 200px;                  
+        grid-auto-flow: dense;                  
         gap: 16px;
     }
 
@@ -24,11 +24,59 @@
         display: block;
     }
 
-    /* items 1, 4, 7, 10, ... span 2 columns and 2 rows */
     .myGrid .item:nth-child(3n + 1) {
         grid-column: span 2;
         grid-row: span 2;
     }
+    .container form {
+        display: flex;
+        flex-direction: column;   /* stack every label and field */
+        gap: 6px;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .container label {
+        display: block;
+        margin-top: 8px;
+    }
+
+    .container input[type="text"],
+    .container input[type="email"],
+    .container select,
+    .container textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container textarea {
+        resize: vertical;
+    }
+
+    .container input[type="submit"] {
+        align-self: flex-start;
+        margin-top: 12px;
+    }
+    
+    html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .container {
+        flex: 1;            
+    }
+
+    footer {
+        margin-top: auto; 
+    }
+
 </style>
 </head>
     <script>
@@ -49,41 +97,53 @@
     <body>
         <header id="head"></header>
         <script src="header/header.js"></script> 
-        <!-- <script src="clock/clock.js"></script>  -->
-        
-        <div class="navbar">
-        <!-- <div class="logo">My Logo</div> -->
-            <ul>
-                <li><a href="default.asp">Home</a></li>
-                <li><a href="news.asp">Shop</a></li>
-            </ul>
-        </div>
+
+        <p><br><br></p>
 
             <div class="container">
-                <form action="action_page.php">
-
+                <form action="action_page.php" method="post">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <input type="text" id="fname" name="firstname" maxlength="50" required autocomplete="given-name">
 
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <input type="text" id="lname" name="lastname" maxlength="50" required autocomplete="family-name">
 
-                    <label for="lname">Email</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Your email address..">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" maxlength="254" required autocomplete="email">
 
                     <label for="country">Country</label>
-                    <select id="country" name="country">
+                    <select id="country" name="country" required>
                         <option value="">Select a country...</option>
                     </select>
 
                     <label for="subject">Subject</label>
-                    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                    <textarea id="subject" name="subject" maxlength="2000" required style="height:200px"></textarea>
 
                     <input type="submit" value="Submit">
-
                 </form>
             </div>
+            
+        <footer id="footer"> </footer>
+        <script src="footer/footer.js"></script> 
 
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                fetch('countries.json')
+                    .then(response => {
+                        if (!response.ok) throw new Error('HTTP ' + response.status);
+                        return response.json();
+                    })
+                    .then(countries => {
+                        const select = document.getElementById('country');
+                        countries.forEach(c => {
+                            const option = document.createElement('option');
+                            option.value = c.code;        // "US", "CA", ...
+                            option.textContent = c.name;  // "United States", ...
+                            select.appendChild(option);
+                        });
+                    })
+                    .catch(err => console.error('Could not load countries:', err));
+            });
+        </script>
     </body>
-
 </html>

@@ -6,17 +6,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="style.css">
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <style>
-        /* vertical stack of groups; this gap is the space between every 3 pictures */
         .myGrid {
             display: flex;
             flex-direction: column;
             gap: 48px;
         }
 
-        /* each group of 3 is its own 4-column grid */
         .myGrid .group {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -25,7 +24,6 @@
             gap: 16px;
         }
 
-        /* first item in each group is the big one */
         .myGrid .group .item:first-child {
             grid-column: span 2;
             grid-row: span 2;
@@ -48,7 +46,7 @@
     <p><br><br></p>
 
     <div class="content">
-        <div class="myGrid" id="grid"></div>
+    <div class="myGrid" id="grid"></div>
     </div>
 
     <script>
@@ -79,5 +77,7 @@
             items.innerHTML = html;
         });
     </script>
+    <footer id="footer"> </footer>
+    <script src="footer/footer.js"></script> 
 </body>
 </html>
