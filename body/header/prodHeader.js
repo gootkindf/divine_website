@@ -3,7 +3,7 @@ function initHeader() {
         <div class="navLeft">
             <a class="buttons" href="home.html">Home</a>
         </div>
-        <div class="logo"> divine </div>
+        <a class="logo" href="home.html"> divine </a>
         <div class="navRight"> 
             <a id="gallery" class="buttons" href="gallery.html">Gallery</a>
             <a class="buttons" target="_blank" href="https://www.instagram.com/divinetimingcollective/">Instagram</a>
