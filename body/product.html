@@ -261,7 +261,7 @@
         document.getElementById("productImg").src = productImages[currentImage];
 
         document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
-          img.classList.toggle("active", index === currentImage);
+          img.classList.toggle("active", index == currentImage);
         });
       }
       document.getElementById("rightButton").addEventListener("click", () => {
@@ -280,7 +280,6 @@
           updateDisplayedImage();
         });
       });
-      updateDisplayedImage();
       $.get("clothes.json", function (data) {
         data.forEach((elem) => {
           if (elem.Name == imageName) {
@@ -335,6 +334,7 @@
             document.getElementById("fitSection").innerHTML = divString;
             document.getElementById("fullFitAdd").innerHTML +=
               `$${totalPrice + product.Price}`;
+            updateDisplayedImage();
           }
         });
       });
