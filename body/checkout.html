@@ -15,11 +15,23 @@
     <title>Product Page</title>
     <link rel="stylesheet" href="style.css" />
     <style type="text/css">
+      .clearDiv {
+        width: 75%;
+      }
       .content {
         margin-top: 100px;
         display: flex;
         width: 100%;
+        min-height: 400px;
         justify-content: space-evenly;
+        margin-bottom: 50px;
+      }
+      .content button:active {
+        border-color: #fff;
+        box-shadow:
+          0 0 5px #fff,
+          0 0 10px #fff,
+          0 0 20px #fff;
       }
       .cartItem {
         display: flex;
@@ -40,8 +52,43 @@
         justify-content: space-between;
       }
       .removeButton {
+        background-color: transparent;
+        font-family: "Courier Prime", monospace;
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 10px;
+        width: 75%;
         height: 30%;
-        font-family: "Courier New", Courier, monospace;
+      }
+      .removeButton:hover {
+        background-color: #b0211f;
+        color: white;
+      }
+      #clearCart {
+        width: 33%;
+        align-self: flex-end;
+        background-color: #b0211f;
+        color: white;
+      }
+      #clearCart:hover {
+        background-color: white;
+        color: #1a1714;
+      }
+      #checkout {
+        width: 33%;
+      }
+      #checkout:hover {
+        background-color: white;
+      }
+      #bottomBar {
+        display: flex;
+        justify-content: space-between;
+      }
+      #testDiv {
+        text-align: right;
+      }
+      #emptyTxt {
+        font-size: large;
       }
     </style>
   </head>
@@ -52,41 +99,52 @@
     <div class="content" id="content">
       <div id="checkoutCart"></div>
     </div>
-
+    <footer id="footer"></footer>
     <script>
+      function clearCheckout() {
+        clearCart();
+        populateCheckoutCart();
+      }
       function populateCheckoutCart() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartContainer = document.getElementById("checkoutCart");
-
-        let html = "";
-        let total = 0;
-        //Not updating quantity, fix tomorrow
-        cart.forEach((item) => {
-          html += `
+        if (cart.length > 0) {
+          let html =
+            "<div id='testDiv'><button class='clearDiv' id='clearCart' onClick='clearCheckout()'>Clear Cart</button></div>";
+          let total = 0;
+          cart.forEach((item) => {
+            html += `
             <div class="cartItem">
                 <img src="${item.image[0]}" id="${item.name}">
                 <div class="textBox">
                     <h3>${item.name}</h3>
                     <p>Size: ${item.size}</p>
-                    <p>Qty: ${item.quantity}</p> 
+                    <p>Qty: ${item.quantity}</p>
                     <p>$${item.price}</p>
                 </div>
-                <button class='clearDiv' data-name='${item.name + "," + item.size}'>Remove From Cart</button>
+                <button class='removeButton' data-name="${item.name}" data-size="${item.size}"'>Remove From Cart</button>
             </div>
         `;
-          total += item.price * item.quantity;
-        });
-
-        cartContainer.innerHTML = html;
-        document.querySelectorAll(".clearDiv").forEach((button) => {
-          button.addEventListener("click", () => {
-            let data = button.dataset.name.split(",");
-            removeFromCart(data[0], data[1]);
-            populateCheckoutCart();
+            total += item.price * item.quantity;
           });
-        });
+          html += `<div id="bottomBar">
+                    <p id='totalPrice'>Total: $${total}</p>
+                    <button class='clearDiv' id='checkout' onClick='alert(":P")'>Checkout</button>
+                 </div>`;
+          cartContainer.innerHTML = html;
+          document.querySelectorAll(".removeButton").forEach((button) => {
+            button.addEventListener("click", () => {
+              removeFromCart(button.dataset.name, button.dataset.size);
+              populateCheckoutCart();
+            });
+          });
+        } else {
+          cartContainer.innerHTML = "<h1 id='emptyTxt'>No Items in Cart</h1>";
+        }
       }
+
       populateCheckoutCart();
     </script>
+    <script src="footer/footer.js"></script>
   </body>
 </html>
