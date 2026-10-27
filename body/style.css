@@ -322,3 +322,28 @@ footer {
     width: 300px;
   }
 }
+
+@media (max-width: 700px) {
+  .filters {
+    padding: 20px;
+  }
+  .sort {
+    padding: 20px;
+  }
+  .parentFoot {
+    width: 300px;
+  }
+}
+
+
+@media (max-width: 450px) {
+  .myGridh {
+    grid-template-columns: 350px !important;
+  }
+  .filters {
+    padding: 5px !important;
+  }
+  .sort {
+    padding: 5px !important;
+  }
+}
