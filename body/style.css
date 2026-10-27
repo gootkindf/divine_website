@@ -156,7 +156,7 @@ header.scrolled {
 
 .buttons.foot {
   text-decoration: none;
-  color: white;
+  color: white !important;
   font-family: "Courier Prime", monospace;
   font-size: 12px;
   font-weight: 400;
