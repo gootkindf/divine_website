@@ -14,33 +14,6 @@
     <title>Product Page</title>
     <link rel="stylesheet" href="style.css" />
     <style type="text/css">
-      @media (max-width: 400px) {
-        .content {
-          display: flex;
-          flex-direction: column;
-          max-width: 390px;
-          margin: 0;
-          align-items: center;
-        }
-        .sideColumn {
-          margin-top: 30px !important;
-          width: 80% !important;
-          margin-bottom: 30px !important;
-        }
-        #middleColumn {
-          max-width: 80% !important;
-        }
-        #middleImgDiv {
-          width: 300px;
-          display: flex;
-          justify-content: space-evenly;
-          align-items: center;
-        }
-        #productImg {
-          max-width: 200px;
-          max-height: 300px;
-        }
-      }
       .content {
         margin-top: 100px;
         margin-bottom: 125px;
@@ -203,6 +176,44 @@
       #descriptionTxt {
         color: #7d7871;
       }
+      @media (max-width: 400px) {
+        .content {
+          display: flex;
+          flex-direction: column;
+          max-width: 390px;
+          margin-top: 30px;
+          margin-bottom: 30px;
+          margin-left: 0px;
+          margin-right: 0px;
+          align-items: center;
+        }
+        .sideColumn {
+          margin-top: 30px;
+          width: 80%;
+        }
+        .fitAddButton {
+          height: 40%;
+          width: 20%;
+          background-color: #1a1714;
+          color: white;
+        }
+        .imgButton {
+          margin: 5px;
+        }
+        #middleColumn {
+          max-width: 80%;
+        }
+        #middleImgDiv {
+          width: 300px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        #productImg {
+          max-width: 200px;
+          max-height: 300px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -251,37 +262,71 @@
     <script src="footer/footer.js"></script>
 
     <script>
+      //Function Definitions
+      /*Name: openProductPage
+        Description: Routes the browser to the product page and encodes the
+                     clicked img information
+        Inputs: Name of the image clicked
+        Outputs: None*/
       function openProductPage(imageName) {
         window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
       }
+
+      /*Name: getFitItems
+        Description: Retrieves 3 random items from clothes.json so they can be 
+                     displayed on the page
+        Inputs: A data array, which has been filtered appropriately for whatever
+                type of item you want displayed.
+        Outputs: A 3 element array of items to display*/
       function getFitItems(data) {
+        //Return array if there aren't more than 3 fits
         if (data.length < 3) return data;
         choices = [];
 
+        //Choose fits until you get three unique
         while (choices.length < 3) {
           choice = data[Math.floor(Math.random() * data.length)];
           if (!choices.includes(choice)) {
             choices.push(choice);
           }
         }
+
         return choices;
       }
+
+      /*Name: updateDisplayedImage()
+        Description: Updates the main product image based on the three smaller
+                     product images below it
+        Inputs: None
+        Outputs: None*/
       function updateDisplayedImage() {
         document.getElementById("productImg").src = productImages[currentImage];
 
+        //Toggle image's active attribute iff its ind is the current image ind
         document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
           img.classList.toggle("active", index == currentImage);
         });
       }
+
+      /*Name: getSelectedSize()
+        Description: Retrieves the size selection from the select tag
+        Inputs: None
+        Outputs: None*/
       function getSelectedSize() {
         let selectedSize = document.getElementById("sizeSelect").value;
+
+        //Throws an alert if the value is the default
         if (!selectedSize) {
           alert("Please select a size before adding to bag.");
           return;
         }
         return selectedSize;
       }
+
+      //Variable declarations
       const params = new URLSearchParams(window.location.search);
+
+      //Retrieve name from URL encoding
       const imageName = params.get("image");
       const product = {
         Name: imageName,
@@ -294,27 +339,17 @@
         Custom: false,
         Description: "",
       };
+
+      //Vars used for product img display
       let currentImage = 0;
       let productImages = [];
 
-      document.getElementById("rightButton").addEventListener("click", () => {
-        currentImage = (currentImage + 1) % productImages.length;
-        updateDisplayedImage();
-      });
-      document.getElementById("leftButton").addEventListener("click", () => {
-        currentImage =
-          (currentImage - 1 + productImages.length) % productImages.length;
-        updateDisplayedImage();
-      });
-      document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
-        img.addEventListener("click", () => {
-          currentImage = index;
-          updateDisplayedImage();
-        });
-      });
+      //Parses clothes.json and fills in html
       $.get("clothes.json", function (data) {
         data.forEach((elem) => {
+          //Look for the specific name from the URL
           if (elem.Name == imageName) {
+            //Populates custom product object based on json
             product.Gender = elem.Gender;
             product.Price = elem.Price;
             product.ImagePath = elem.ImagePath[0];
@@ -323,28 +358,43 @@
             product.Custom = elem.Custom;
             product.OutOfStock = elem.OutOfStock;
             product.Description = elem.Description;
+
+            //Builds the select tag HTML based on available sizes
             selectStr = "";
             Object.entries(product.Sizes).forEach(([size, count]) => {
+              //If size if available, do:
               if (count > 0)
                 selectStr += `<option value='${size}'> ${size} </option>`;
+              //If size is unavailable, indicate that
               else {
                 selectStr += `<option value='${size}' disabled>${size} - SOLD OUT</option>`;
               }
             });
             document.getElementById("sizeSelect").innerHTML += selectStr;
+
+            //Fills in simple HTML based on read vals
             document.getElementById("productName").innerHTML = product.Name;
             document.getElementById("productImg").src = product.ImagePath;
             document.getElementById("descriptionTxt").innerHTML =
               product.Description;
+            document.getElementById("price").innerHTML = `$${product.Price}`;
+            document.getElementById("bagButton").innerHTML +=
+              `$${product.Price}`;
+            if (product.Stock < 50) {
+              document.getElementById("stockMarker").innerHTML = "⏺ Low stock";
+            }
+
+            //Populates productImages for display later
             Array.from(
               document.getElementsByClassName("smallMiddleImg"),
             ).forEach((elem) => {
               elem.src = product.ImagePath;
               productImages.push(elem.src);
             });
-            document.getElementById("price").innerHTML = `$${product.Price}`;
-            document.getElementById("bagButton").innerHTML +=
-              `$${product.Price}`;
+
+            /*Sets up bag and buy buttons. Necessary to use elem here as product
+            is distinct from the json elems that will be used to pull from cart
+            later*/
             document
               .getElementById("bagButton")
               .addEventListener("click", () => {
@@ -357,9 +407,9 @@
                 let size = getSelectedSize();
                 if (size) bagAndGo(elem, size);
               });
-            if (product.Stock < 50) {
-              document.getElementById("stockMarker").innerHTML = "⏺ Low stock";
-            }
+
+            //Retrieves fit items based on gender and if they're unique from the
+            //current product
             let fitItems = getFitItems(
               data.filter(
                 (item) =>
@@ -368,9 +418,10 @@
                   item.Name != product.Name,
               ),
             );
+
+            //Builds fit items html section
             let totalPrice = 0;
             let divString = "";
-
             fitItems.forEach((item, index) => {
               divString += `<div class='fitDiv'>
                               <div class='fitImgContainer' onClick='openProductPage("${item.Name}")'>
@@ -385,33 +436,72 @@
               totalPrice += item.Price;
             });
             document.getElementById("fitSection").innerHTML += divString;
+
+            //Adds event listener for each add button on the fit items
             document.querySelectorAll(".fitAddButton").forEach((button) => {
               button.addEventListener("click", () => {
+                //If size is uninitialized, return
                 let size = getSelectedSize();
                 if (!size) return;
 
+                //If we can't find the items in our fit items, return
                 let itemToAdd = fitItems.find(
                   (item) => item.Name == button.dataset.name,
                 );
-
                 if (!itemToAdd) {
                   console.error("Could not find item:", button.dataset.name);
                   return;
                 }
+
+                //If the size is unavailable, return
+                if (itemToAdd.Sizes[size] == 0) {
+                  alert(
+                    `Couldn't add ${itemToAdd.Name} in size ${size}, item out of stock!`,
+                  );
+                  return;
+                }
+
                 addToCart(itemToAdd, size);
               });
             });
+
+            //Fill in full fit button html
             const fullFit = document.getElementById("fullFitAdd");
             fullFit.innerHTML += `$${totalPrice + product.Price}`;
+
+            //Add event listener to full fit button that adds all items to cart
+            //(including current product)
             fullFit.addEventListener("click", () => {
               document.querySelectorAll(".fitAddButton").forEach((button) => {
                 button.click();
               });
               document.getElementById("bagButton").click();
             });
+
+            //Update the current product
             updateDisplayedImage();
+
+            //Skip parsing the rest of the json
             return;
           }
+        });
+      });
+
+      //Sets up click event listeners for the small product img section as well
+      //as the buttons
+      document.getElementById("rightButton").addEventListener("click", () => {
+        currentImage = (currentImage + 1) % productImages.length;
+        updateDisplayedImage();
+      });
+      document.getElementById("leftButton").addEventListener("click", () => {
+        currentImage =
+          (currentImage - 1 + productImages.length) % productImages.length;
+        updateDisplayedImage();
+      });
+      document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
+        img.addEventListener("click", () => {
+          currentImage = index;
+          updateDisplayedImage();
         });
       });
     </script>

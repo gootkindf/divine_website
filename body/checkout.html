@@ -41,7 +41,7 @@
         align-items: center;
       }
       .cartItem img {
-        max-height: 100%;
+        height: 100%;
         max-width: 150px;
         margin-right: 40px;
       }
@@ -90,6 +90,28 @@
       #emptyTxt {
         font-size: large;
       }
+      @media (max-width: 400px) {
+        .content {
+          margin-top: 70px;
+          margin-bottom: 30px;
+          margin-left: 10px;
+          margin-right: 10px;
+          max-width: 390px;
+          min-height: 400px;
+        }
+        .cartItem {
+          width: 300px;
+          margin-top: 20px;
+        }
+        .cartItem img {
+          height: 100%;
+          max-width: 100px;
+          margin-right: 10px;
+        }
+        .removeButton {
+          width: 90%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -101,17 +123,35 @@
     </div>
     <footer id="footer"></footer>
     <script>
+      //Function Definitions
+      /*Name: clearCheckout()
+        Description: Clears the cart from local storage and resets the page
+        Inputs: None
+        Outputs: None
+      */
       function clearCheckout() {
         clearCart();
         populateCheckoutCart();
       }
+
+      /*Name: populateCheckoutCart()
+        Description: Populates the html on the page based on the local storage
+                     cart
+        Inputs: None
+        Outputs: None
+      */
       function populateCheckoutCart() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const cartContainer = document.getElementById("checkoutCart");
+
+        //If cart has items, fill the html
         if (cart.length > 0) {
+          //Populates clear button as first elem
           let html =
             "<div id='testDiv'><button class='clearDiv' id='clearCart' onClick='clearCheckout()'>Clear Cart</button></div>";
           let total = 0;
+
+          //For each item in the cart, generate the below cartItem HTML
           cart.forEach((item) => {
             html += `
             <div class="cartItem">
@@ -125,24 +165,34 @@
                 <button class='removeButton' data-name="${item.name}" data-size="${item.size}"'>Remove From Cart</button>
             </div>
         `;
+
+            //Keep track of the total price for later
             total += item.price * item.quantity;
           });
+
+          //Add the total price label
           html += `<div id="bottomBar">
                     <p id='totalPrice'>Total: $${total}</p>
                     <button class='clearDiv' id='checkout' onClick='alert(":P")'>Checkout</button>
                  </div>`;
           cartContainer.innerHTML = html;
+
+          //Add the cick event listeners for removign items from the cart
           document.querySelectorAll(".removeButton").forEach((button) => {
             button.addEventListener("click", () => {
               removeFromCart(button.dataset.name, button.dataset.size);
               populateCheckoutCart();
             });
           });
-        } else {
+        }
+
+        //If cart is empty, indicate that on the page
+        else {
           cartContainer.innerHTML = "<h1 id='emptyTxt'>No Items in Cart</h1>";
         }
       }
 
+      //Populate the page html
       populateCheckoutCart();
     </script>
     <script src="footer/footer.js"></script>
