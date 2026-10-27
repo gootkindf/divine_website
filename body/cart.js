@@ -1,6 +1,8 @@
-const cart = JSON.parse(localStorage.getItem("cart")) || [];
+var cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 function addToCart(product, size) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  console.log("ADDING", product.Name, size);
+  cart = JSON.parse(localStorage.getItem("cart")) || [];
   let itemFound = cart.find(
     (item) => item.name == product.Name && item.size == size,
   );
@@ -15,6 +17,11 @@ function addToCart(product, size) {
       image: product.ImagePath,
     });
   }
-
   localStorage.setItem("cart", JSON.stringify(cart));
+  console.log(cart);
+}
+
+function bagAndGo(product, size) {
+  addToCart(product, size);
+  window.location.href = "checkout.html";
 }

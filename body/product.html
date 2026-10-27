@@ -192,7 +192,7 @@
       <div class="sideColumn">
         Divine Timing
         <div id="productName"></div>
-        <p id="descriptionTxt">{Add further descriptions here}</p>
+        <p id="descriptionTxt"></p>
       </div>
 
       <div id="middleColumn">
@@ -243,7 +243,21 @@
         }
         return choices;
       }
+      function updateDisplayedImage() {
+        document.getElementById("productImg").src = productImages[currentImage];
 
+        document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
+          img.classList.toggle("active", index == currentImage);
+        });
+      }
+      function getSelectedSize() {
+        let selectedSize = document.getElementById("sizeSelect").value;
+        if (!selectedSize) {
+          alert("Please select a size before adding to bag.");
+          return;
+        }
+        return selectedSize;
+      }
       const params = new URLSearchParams(window.location.search);
       const imageName = params.get("image");
       const product = {
@@ -253,22 +267,17 @@
         ImagePath: "",
         Stock: 0,
         Sizes: {},
+        OutOfStock: false,
         Custom: false,
+        Description: "",
       };
       let currentImage = 0;
       let productImages = [];
-      function updateDisplayedImage() {
-        document.getElementById("productImg").src = productImages[currentImage];
 
-        document.querySelectorAll(".smallMiddleImg").forEach((img, index) => {
-          img.classList.toggle("active", index == currentImage);
-        });
-      }
       document.getElementById("rightButton").addEventListener("click", () => {
         currentImage = (currentImage + 1) % productImages.length;
         updateDisplayedImage();
       });
-
       document.getElementById("leftButton").addEventListener("click", () => {
         currentImage =
           (currentImage - 1 + productImages.length) % productImages.length;
@@ -289,13 +298,21 @@
             product.Stock = elem.Stock;
             product.Sizes = elem.Sizes;
             product.Custom = elem.Custom;
+            product.OutOfStock = elem.OutOfStock;
+            product.Description = elem.Description;
             selectStr = "";
             Object.entries(product.Sizes).forEach(([size, count]) => {
-              selectStr += `<option value='${size}'> ${size} </option>`;
+              if (count > 0)
+                selectStr += `<option value='${size}'> ${size} </option>`;
+              else {
+                selectStr += `<option value='${size}' disabled>${size} - SOLD OUT</option>`;
+              }
             });
             document.getElementById("sizeSelect").innerHTML += selectStr;
             document.getElementById("productName").innerHTML = product.Name;
             document.getElementById("productImg").src = product.ImagePath;
+            document.getElementById("descriptionTxt").innerHTML =
+              product.Description;
             Array.from(
               document.getElementsByClassName("smallMiddleImg"),
             ).forEach((elem) => {
@@ -305,10 +322,22 @@
             document.getElementById("price").innerHTML = `$${product.Price}`;
             document.getElementById("bagButton").innerHTML +=
               `$${product.Price}`;
+            document
+              .getElementById("bagButton")
+              .addEventListener("click", () => {
+                let size = getSelectedSize();
+                if (size) addToCart(elem, size);
+              });
+            document
+              .getElementById("buyButton")
+              .addEventListener("click", () => {
+                let size = getSelectedSize();
+                if (size) bagAndGo(elem, size);
+              });
             if (product.Stock < 50) {
               document.getElementById("stockMarker").innerHTML = "⏺ Low stock";
             }
-            fitItems = getFitItems(
+            let fitItems = getFitItems(
               data.filter(
                 (item) =>
                   item.Stock != 0 &&
@@ -316,11 +345,12 @@
                   item.Name != product.Name,
               ),
             );
-            divString = "";
-            totalPrice = 0;
-            fitItems.forEach((item) => {
+            let totalPrice = 0;
+            let divString = "";
+
+            fitItems.forEach((item, index) => {
               divString += `<div class='fitDiv'>
-                              <div class='fitImgContainer' onclick='openProductPage("${item.Name}")'>
+                              <div class='fitImgContainer' onClick='openProductPage("${item.Name}")'>
                                 <img src='${item.ImagePath[0]}' />
                                 <span class='viewLabel'>VIEW</span>
                               </div>`;
@@ -328,13 +358,36 @@
                               <h2><u>${item.Name.toUpperCase()}</u></h2>
                               <h3>$${item.Price}</h3>
                             </div>`;
-              divString += "<button class='fitAddButton'>+ ADD</button></div>";
+              divString += `<button class='fitAddButton' data-name='${item.Name}'>+ ADD</button></div>`;
               totalPrice += item.Price;
             });
-            document.getElementById("fitSection").innerHTML = divString;
-            document.getElementById("fullFitAdd").innerHTML +=
-              `$${totalPrice + product.Price}`;
+            document.getElementById("fitSection").innerHTML += divString;
+            document.querySelectorAll(".fitAddButton").forEach((button) => {
+              button.addEventListener("click", () => {
+                let size = getSelectedSize();
+                if (!size) return;
+
+                let itemToAdd = fitItems.find(
+                  (item) => item.Name == button.dataset.name,
+                );
+
+                if (!itemToAdd) {
+                  console.error("Could not find item:", button.dataset.name);
+                  return;
+                }
+                addToCart(itemToAdd, size);
+              });
+            });
+            const fullFit = document.getElementById("fullFitAdd");
+            fullFit.innerHTML += `$${totalPrice + product.Price}`;
+            fullFit.addEventListener("click", () => {
+              document.querySelectorAll(".fitAddButton").forEach((button) => {
+                button.click();
+              });
+              document.getElementById("bagButton").click();
+            });
             updateDisplayedImage();
+            return;
           }
         });
       });
