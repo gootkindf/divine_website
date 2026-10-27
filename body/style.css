@@ -154,6 +154,20 @@ header.scrolled {
   line-height: 1.5;
 }
 
+.buttons.foot {
+  text-decoration: none;
+  color: white;
+  font-family: "Courier Prime", monospace;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.buttons.foot:hover{
+  color: white !important;
+  font-weight: 700;
+}
+
 .buttons.active {
   text-decoration: underline;
   color: #b0211f;
