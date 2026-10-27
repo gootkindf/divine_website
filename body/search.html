@@ -87,10 +87,12 @@
     </head>
 
     <body>
+        <!-- Scripts to control the header, clock, adn cart -->
         <header id="head"></header>
         <script src="header/header.js"></script> 
         <script src=“cart.js”></script> 
         
+        <!--   Setup list and input for search  -->
         <div class="searching"> 
             <h1 class="text">Search</h1>
             <input type="search" id="searchBox" placeholder="Divine Divine Divine">
@@ -98,11 +100,13 @@
         
         <ul class="search" id="list"></ul>
 
+        <!-- Scripts to control the footer -->
         <footer id="footer"> </footer>
         <script src="footer/footer.js"></script> 
 
 
         <script>
+            //variable definitions for filtering products
             document.getElementById("unisex").classList.remove("active");
             document.getElementById("search").classList.add("active");
 
@@ -112,10 +116,12 @@
             var filtr = "Unisex";
             var keyword = "all";
             
+            //Opens product page from home click
             function openProductPage(imageName) {
                 window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
             }
             
+            //same print element function with slightly different formatting
             function printElem(elem){
                 clothing += `
                     <li class="items" id="${elem.Name}" onClick="openProductPage('${elem.Name}')">
@@ -132,6 +138,7 @@
                     </li>  `;
             }
             
+            //filter for search by keywords
             function displayClothes(){
                 clothing = "";
                 $.get("clothes.json", function(data) {
@@ -150,25 +157,19 @@
                     } else {
                         items.innerHTML = clothing;
                         items.classList.remove("none");
-                    }
-
-                    
+                    } 
                 })
-
             }
 
             displayClothes(filtr);
 
+            //filter for a keyword
             searchBox.addEventListener('keydown', function(event) {
                 if(event.key == 'Enter') {
                     keyword = searchBox.value.toLowerCase();
                     displayClothes();
                 }
             })
-
-            
-
-
         </script>
     </body>
 
