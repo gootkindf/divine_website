@@ -1,3 +1,5 @@
+
+//initalized the entire footer usuing javascript so it can be loaded into multiple pages
 function initFooter() {
     var output = `
         <a class="logo footer" href="home.html"> 
