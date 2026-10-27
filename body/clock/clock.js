@@ -1,4 +1,6 @@
 
+
+//places clock on the home page
 function initClock() {
     document.write(
         `<div class="clock">
@@ -8,32 +10,31 @@ function initClock() {
             <div class="center"></div>
         </div>`
     );
-
 }
 
+//function created to update the clock, used 
 function updateClock() {
-    const now = new Date(); // Get the current live time
+    const now = new Date(); 
 
     const seconds = now.getSeconds();
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    // Calculate rotation degrees
+    // Calculate rotation degrees, formula found online
     const secondDegrees = seconds * 6; 
-    const minuteDegrees = (minutes * 6) + (seconds * 0.1); // subtle shift based on seconds
-    const hourDegrees = (hours * 30) + (minutes * 0.5);   // smooth transition between hours
+    const minuteDegrees = (minutes * 6) + (seconds * 0.1); 
+    const hourDegrees = (hours * 30) + (minutes * 0.5);   
 
-    // Apply the rotation styles to the DOM elements
+    // Apply rotation styles to elements
     document.getElementById('secondhand').style.transform = `translateX(-50%) rotate(${secondDegrees}deg)`;
     document.getElementById('minutehand').style.transform = `translateX(-50%) rotate(${minuteDegrees}deg)`;
     document.getElementById('hourhand').style.transform = `translateX(-50%) rotate(${hourDegrees}deg)`;
 }
 
-// Initilize clock
 initClock();
 
-// Run the function every 1000ms (1 second)
+// Run the function every secpng
 setInterval(updateClock, 1000);
 
-// Call it immediately so the clock doesn't "jump" on page load
+// Immadiate call so it shows up on load of window
 updateClock();
