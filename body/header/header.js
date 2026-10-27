@@ -1,3 +1,4 @@
+//initalized the entire footer usuing javascript so it can be loaded into multiple pages
 function initHeader() {
     var output = `
         <div class="navLeft">
@@ -16,7 +17,8 @@ function initHeader() {
     document.getElementById("head").innerHTML = output;
         
 }
-
+//adds a scroll effect to the window so that the header changes color as you scroll down.
+// this is achieved through adding a class that changes the css.
 window.addEventListener("scroll", function() {
     const header = document.querySelector("header");
     const buttons = document.querySelectorAll(".buttons");
@@ -26,8 +28,6 @@ window.addEventListener("scroll", function() {
         buttons.forEach(x => {
             x.classList.add("scrolled");
         });
-        
-        
     } else {
         header.classList.remove("scrolled");
         buttons.forEach(x => {
@@ -36,15 +36,13 @@ window.addEventListener("scroll", function() {
     }
 });
 
-
-
 initHeader();
 
 const buttons = document.querySelectorAll(".buttons");
 
+//This is for the filtering of clothes on the home page based on header buttons
 buttons.forEach(button => {
         button.addEventListener("click", () => {
-        // Update selected button styling
         buttons.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
 
@@ -55,7 +53,6 @@ buttons.forEach(button => {
         } else {
             displayClothes("Unisex");
         }
-            
     });
 });
 

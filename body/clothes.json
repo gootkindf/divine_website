@@ -6,7 +6,6 @@
     "ImagePath": ["pictures/fear.png", "pictures/truck.jpg", "pictures/green_hat.png", "pictures/black.png"],
     "Stock": 20,
     "Sizes": { "XS": 0, "S": 5, "M": 3, "L": 7, "XL": 5, "XXL": 0 },
-    "OutOfStock": false,
     "Custom": false,
     "Description": "A heavyweight oversized boxy tee built for everyday wear. Designed with a relaxed silhouette and a structured feel, this piece brings comfort and presence together. A statement graphic makes it a staple for any rotation."
   },
