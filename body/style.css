@@ -4,6 +4,9 @@ body {
     padding-top: 0;
     scroll-behavior: smooth;
     
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -39,8 +42,10 @@ div {
 
 .all {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-bottom: 120px;
+
+    flex: 1;
 }
 
 .filters {
@@ -49,6 +54,7 @@ div {
 
 .sort {
     padding: 60px;
+    padding-right: 100px;
 }
 
 .item {
