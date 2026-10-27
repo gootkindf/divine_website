@@ -33,7 +33,7 @@
   {
     "Name": "Track Jacket",
     "Gender": "men",
-    "Price": 40,
+    "Price": 100,
     "ImagePath": ["pictures/trackjacket.png"],
     "Stock": 100,
     "Sizes": { "XS": 4, "S": 14, "M": 25, "L": 29, "XL": 20, "XXL": 8 },
@@ -47,7 +47,7 @@
     "ImagePath": ["pictures/salmon.png", "pictures/looking_at_hand.png", "pictures/looking_down.png", "pictures/necklace.png"],
     "Stock": 50,
     "Sizes": { "XS": 2, "S": 7, "M": 12, "L": 14, "XL": 11, "XXL": 4 },
-    "Custom": false,
+    "Custom": true,
     "Description": "A cropped hoodie with a relaxed silhouette and a bold graphic. Designed to sit above the waist, it balances a casual feel with a distinct shape. An easy statement piece made for layering or wearing on its own."
   },
   {
