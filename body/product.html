@@ -14,6 +14,33 @@
     <title>Product Page</title>
     <link rel="stylesheet" href="style.css" />
     <style type="text/css">
+      @media (max-width: 400px) {
+        .content {
+          display: flex;
+          flex-direction: column;
+          max-width: 390px;
+          margin: 0;
+          align-items: center;
+        }
+        .sideColumn {
+          margin-top: 30px !important;
+          width: 80% !important;
+          margin-bottom: 30px !important;
+        }
+        #middleColumn {
+          max-width: 80% !important;
+        }
+        #middleImgDiv {
+          width: 300px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        #productImg {
+          max-width: 200px;
+          max-height: 300px;
+        }
+      }
       .content {
         margin-top: 100px;
         display: flex;
@@ -219,6 +246,9 @@
         <button id="fullFitAdd" class="clearDiv">ADD THE FULL FIT ·</button>
       </div>
     </div>
+    <footer id="footer"></footer>
+    <script src="footer/footer.js"></script>
+
     <script>
       function openProductPage(imageName) {
         window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
