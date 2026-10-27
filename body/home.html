@@ -58,13 +58,14 @@
     </head>
 
     <body>
+        <!-- Scripts to control the header, clock, adn cart -->
         <header id="head"></header>
         <script src="header/header.js"></script> 
         <script src="clock/clock.js"></script> 
         <script src=“cart.js”></script>
         
         
-        
+        <!-- Define all major content on home page -->
         <div class="all">
             <div class="filters">
                 <h1>Browse By Category</h1>
@@ -86,20 +87,24 @@
             </div>
         </div>
 
+        <!-- Scripts to control the footer -->
         <footer id="footer"> </footer>
         <script src="footer/footer.js"></script> 
         
 
         <script>
+            //define global variables for event processing
             const items = document.getElementById("grid");
             var clothing = "";
             var filtr = "Unisex";
             var custom = false;
             
+            //Opens product page from home click
             function openProductPage(imageName) {
                 window.location.href = `product.html?image=${encodeURIComponent(imageName)}`;
             }
             
+            //Prints specific elemnts with image as well as name and price
             function printElem(elem){
                 clothing += `
                     <div class="item" id="${elem.Name}">
@@ -115,16 +120,24 @@
                     </div>  `;
             }
             
+            //function to read in and display correct clothes, all filtering 
+            // done in function.
             function displayClothes(filtr){
                 clothing = "";
                 $.get("clothes.json", function(data) {
                     data.forEach(elem => {
                         if(elem.Stock > 0) {
+
+                            //case statement to deal with all possible filters
                             if(filtr == "Unisex"){
                                 printElem(elem);
                             } else if(filtr == elem.Gender) {
                                 printElem(elem);
                             } else if(filtr == "custom"){
+
+                                //ensures that mens and womans filter are kept 
+                                // consistent with the top filter of mens, womans,
+                                // and unisex.
                                 if(elem.Custom){
                                     if(window.location.hash.substring(1).includes(elem.Gender)){
                                         printElem(elem);
@@ -133,6 +146,10 @@
                                     }
                                 }
                             } else if(Number.isFinite(filtr)){
+
+                                //ensures that mens and womans filter are kept 
+                                // consistent with the top filter of mens, womans,
+                                // and unisex.
                                 if(elem.Price == filtr){
                                     if(window.location.hash.substring(1).includes(elem.Gender)){
                                         printElem(elem);
@@ -143,6 +160,7 @@
                             }
                         }
                     })
+                    //display clothes
                     if(clothing == ''){
                         items.innerHTML = "No Products Available"
                     }else {
@@ -156,19 +174,17 @@
         </script>
 
         <script>
+            //define variables for Sorting
             const dropMenu = document.querySelectorAll(".dropPrice");
             const customButton = document.getElementById("cust");
             var customOn = false
 
-
+            //filters home page for customizable items
             customButton.addEventListener("click", () => {
                 if(!customOn){
                     displayClothes("custom");
                     customOn = true;
                 } else {
-                    console.log(window.location.hash);
-                    console.log(window.location.hash.substring(1));
-
                     if(window.location.hash.substring(1) == "mens"){
                         displayClothes("men");
                     } else if(window.location.hash.substring(1) == "womans") {
@@ -180,10 +196,10 @@
                 }
             })
 
+            //filter by price
             dropMenu.forEach(item => {
                 item.addEventListener("click", () => {
                     var price = Number(item.dataset.value);
-                    console.log(price);
                     displayClothes(price);
                 })
             })
