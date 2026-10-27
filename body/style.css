@@ -275,6 +275,23 @@ footer {
 
 .collective {
     text-align: center;
+    
+}
+
+.parentFoot {
+    display: flex; 
+    justify-content: space-between; 
+    width: 400px;
+}
+
+.footerContent {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: auto;
+    gap: 10px;
+    row-gap: 10px;
+    
 }
 
 
@@ -296,6 +313,9 @@ footer {
     }
     .sort {
         padding: 20px;
+    }
+    .parentFoot {
+        width: 300px;
     }
 }
 
