@@ -285,7 +285,7 @@
           if (elem.Name == imageName) {
             product.Gender = elem.Gender;
             product.Price = elem.Price;
-            product.ImagePath = elem.ImagePath;
+            product.ImagePath = elem.ImagePath[0];
             product.Stock = elem.Stock;
             product.Sizes = elem.Sizes;
             product.Custom = elem.Custom;
@@ -321,7 +321,7 @@
             fitItems.forEach((item) => {
               divString += `<div class='fitDiv'>
                               <div class='fitImgContainer' onclick='openProductPage("${item.Name}")'>
-                                <img src='${item.ImagePath}' />
+                                <img src='${item.ImagePath[0]}' />
                                 <span class='viewLabel'>VIEW</span>
                               </div>`;
               divString += `<div class='textDiv'>
