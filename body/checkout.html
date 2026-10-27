@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <title>Checkout Page</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,40 +14,77 @@
     <script src="cart.js"></script>
     <title>Product Page</title>
     <link rel="stylesheet" href="style.css" />
+    <style type="text/css">
+      .content {
+        margin-top: 100px;
+        display: flex;
+        width: 100%;
+        justify-content: space-evenly;
+      }
+      .cartItem {
+        display: flex;
+        width: 800px;
+        margin-top: 20px;
+        border-bottom: 2px solid black;
+        align-items: center;
+      }
+      .cartItem img {
+        max-height: 100%;
+        max-width: 150px;
+        margin-right: 40px;
+      }
+      .textBox {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-between;
+      }
+      .removeButton {
+        height: 30%;
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
   </head>
   <body>
     <header id="head"></header>
     <script src="header/prodHeader.js"></script>
-    <div id="checkoutCart"></div>
+
+    <div class="content" id="content">
+      <div id="checkoutCart"></div>
+    </div>
+
     <script>
       function populateCheckoutCart() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
         const cartContainer = document.getElementById("checkoutCart");
 
         let html = "";
         let total = 0;
-
+        //Not updating quantity, fix tomorrow
         cart.forEach((item) => {
           html += `
             <div class="cartItem">
                 <img src="${item.image[0]}" id="${item.name}">
-                <div>
+                <div class="textBox">
                     <h3>${item.name}</h3>
                     <p>Size: ${item.size}</p>
-                    <p>Qty: ${item.quantity}</p>
+                    <p>Qty: ${item.quantity}</p> 
                     <p>$${item.price}</p>
                 </div>
+                <button class='clearDiv' data-name='${item.name + "," + item.size}'>Remove From Cart</button>
             </div>
         `;
-
           total += item.price * item.quantity;
         });
 
         cartContainer.innerHTML = html;
-
-        document.getElementById("subtotal").textContent =
-          `$${total.toFixed(2)}`;
+        document.querySelectorAll(".clearDiv").forEach((button) => {
+          button.addEventListener("click", () => {
+            let data = button.dataset.name.split(",");
+            removeFromCart(data[0], data[1]);
+            populateCheckoutCart();
+          });
+        });
       }
       populateCheckoutCart();
     </script>
